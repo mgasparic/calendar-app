@@ -1,0 +1,53 @@
+{
+  "events_count": 5000,
+  "modification_rate_in_seconds": 300,
+  "replacement_rate": 5,
+  "update_rate": 5,
+  "users": [
+    "jimmy@accelerator-apps.com",
+    "johnny@accelerator-apps.com",
+    "anna@accelerator-apps.com",
+    "maria@accelerator-apps.com",
+    "fabio@accelerator-apps.com"
+  ],
+  "options": {
+    "full_names": [
+      "James Bond",
+      "Mickey Mouse",
+      "Minnie Mouse",
+      "Sheldon Cooper",
+      "Donald Duck",
+      "John Oliver",
+      "Bill Maher",
+      "Kanye West"
+    ],
+    "emails": [
+      "jimmy@accelerator-apps.com",
+      "johnny@accelerator-apps.com",
+      "anna@accelerator-apps.com",
+      "maria@accelerator-apps.com",
+      "fabio@accelerator-apps.com",
+      "James.Bond@gmail.com",
+      "Mickey.Mouse@gmail.com",
+      "Minnie.Mouse@gmail.com",
+      "Sheldon.Cooper@gmail.com",
+      "Donald.Duck@gmail.com",
+      "John.Oliver@gmail.com",
+      "Bill.Maher@gmail.com",
+      "Kanye.West@gmail.com"
+    ],
+    "summaries": [
+      "Happy Day",
+      "Sad Day",
+      "Birth Day",
+      "New Year's Eve",
+      "Christmas",
+      "Easter",
+      "Independence Day",
+      "D Day",
+      "Fancy Party",
+      "Skiing",
+      "Sun Bathing"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//accelerator/app//NONSGML v1.0//EN
+BEGIN:VEVENT
+UID:{{.Uid}}
+ORGANIZER;CN={{.FullName}}:MAILTO:{{.Email}}
+DTSTART:{{.Start}}
+DTEND:{{.End}}
+SUMMARY:{{.Summary}}
+GEO:{{.GeoLat}};{{.GeoLon}}
+END:VEVENT
+END:VCALENDAR
