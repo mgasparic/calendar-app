@@ -3,16 +3,23 @@ package main
 import (
 	"api/internal/commons"
 	"api/internal/events"
+	"api/internal/graph"
+	"api/internal/graph/generated"
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/kelseyhightower/envconfig"
 	_ "github.com/lib/pq"
 	"log"
+	"net/http"
 	"time"
 )
 
 type EnvVars struct {
+	ServicePort               int    `envconfig:"SERVICE_PORT" default:"9000"`
+	ServiceEnvironment        string `envconfig:"SERVICE_ENVIRONMENT" default:"local"`
 	GeneratorServiceUrlFormat string `envconfig:"GENERATOR_SERVICE_URL_FORMAT"`
 	Users                     string `envconfig:"USERS"`
 	Interval                  int    `envconfig:"INTERVAL"`
@@ -59,5 +66,12 @@ func main() {
 		log.Fatal("db not reachable")
 	}
 
-	events.ContinuouslySynchronizeEvents(commons.GeneratorServiceUrlFormat(envVars.GeneratorServiceUrlFormat), dbClient, time.Duration(envVars.Interval)*time.Minute, users, commons.EventsCount(envVars.EventsCount))
+	go events.ContinuouslySynchronizeEvents(commons.GeneratorServiceUrlFormat(envVars.GeneratorServiceUrlFormat), dbClient, time.Duration(envVars.Interval)*time.Minute, users, commons.EventsCount(envVars.EventsCount))
+
+	events.SetDbClient(dbClient)
+	server := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
+	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
+	http.Handle("/query", server)
+	log.Printf("connect to http://localhost:%d/ for GraphQL playground", envVars.ServicePort)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", envVars.ServicePort), nil))
 }

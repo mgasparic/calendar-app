@@ -1,0 +1,20 @@
+input Page {
+    UserEmail: String!
+    Offset: Int!
+    Limit: Int!
+}
+
+type Event {
+    Uid:      String!
+    FullName: String!
+    Email:    String!
+    Start:    String!
+    End:      String!
+    Summary:  String!
+    GeoLat:   Float!
+    GeoLon:   Float!
+}
+
+type Query {
+    events(input: Page!): [Event!]!
+}

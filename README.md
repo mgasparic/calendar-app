@@ -13,8 +13,33 @@ multi-threading.
 
 ### Consumer
 
-No endpoint
+| Path | Method  | Params | Possible Codes | Success Response |
+|:-----|:--------|:-------|:---------------|:-----------------|
+| /    | GraphQL | Query  | NA             | List of events   |
 
 ## Simulation
 
 Run `./scripts/setup.sh` on Linux machine with Docker. Or perform equivalent actions on a different machine.
+
+## GraphQL Playground
+
+If you use default settings, you can use http://localhost:9000 to test queries, such as:
+
+```
+{
+  events(input: {UserEmail: "jimmy@accelerator-apps.com", Offset: 50, Limit: 10}) {
+    Uid
+    FullName
+    Email
+    Start
+    End
+    Summary
+    GeoLat
+    GeoLon
+  }
+}
+```
+
+Example result:
+
+![](docs/example.png)
