@@ -86,7 +86,7 @@ func getRandomEvent() commons.Event {
 		Start:    commons.Start(start.Format(icsTimeFormat)),
 		End:      commons.End(end.Format(icsTimeFormat)),
 		Summary:  possibleSummariesConfig[rand.Intn(len(possibleSummariesConfig))],
-		GeoLat:   commons.GeoLat(rand.Intn(3600) / 20),
-		GeoLon:   commons.GeoLon(rand.Intn(3600) / 20),
+		GeoLat:   commons.GeoLat(float32(rand.Intn(3600)) / 20),
+		GeoLon:   commons.GeoLon(float32(rand.Intn(3600)) / 20),
 	}
 }

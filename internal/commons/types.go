@@ -39,3 +39,5 @@ type GeneratorConfigOptions struct {
 	Emails    []Email    `json:"emails"`
 	Summaries []Summary  `json:"summaries"`
 }
+
+type GeneratorServiceUrlFormat string

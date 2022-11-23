@@ -9,4 +9,5 @@ FROM alpine:3.17
 WORKDIR /root/
 ARG service
 COPY --from=builder /build/cmd/$service/$service service
+COPY --from=builder /build/assets /assets
 CMD ["./service"]
